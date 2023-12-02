@@ -93,15 +93,12 @@ pub fn run_part2() -> i32 {
                             first = idx as i32 + 1;
                         }
                         second = idx as i32 + 1;
-                        println!("{:?}", matcher);
                     }
                 });
 
             matcher.reset();
 
             let result = first * 10 + second;
-
-            println!("{}: {}", line, result);
 
             result
         })
