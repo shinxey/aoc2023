@@ -1,7 +1,5 @@
-import System.Environment
-import Data.Char
-import Data.String
-import Data.Maybe
+module Day1 where
+
 import Data.List
 
 prefixes :: [String]
@@ -31,10 +29,6 @@ calibrationValue string =
 sumOfCalibrationValues :: [String] -> Int
 sumOfCalibrationValues = sum . map calibrationValue
 
-main = do
-    content <- readFile "inputs/input1.txt"
-    let linesOfFile = lines content
-    let answer = sumOfCalibrationValues linesOfFile
-    print answer
-    return ()
+day1 :: String -> Int
+day1 = sumOfCalibrationValues . lines
 
