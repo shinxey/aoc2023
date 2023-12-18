@@ -6,7 +6,7 @@ import qualified Data.Char as Char
 -- context
 
 data Part = Part { position :: Int, len :: Int, value :: Int }
-data Context = Context { parts :: [[Part]], gears :: [[Part]] }
+data Context = Context { parts :: [[Part]], gears :: [[Int]] }
 
 instance Show Part where
     show (Part pos len val) = "{ pos: " ++ show pos ++ ", len: " ++ show len ++ ", value: " ++ show val ++ "}"
@@ -24,13 +24,11 @@ parseParts str pos =
         [] -> parseParts (dropWhile (not . Char.isDigit) str) (pos + length (takeWhile (not . Char.isDigit) str))
         _ -> Part pos (length chars) (read chars :: Int):parseParts (dropWhile Char.isDigit str) (pos + length chars)
 
-parseGears :: String -> Int -> [Part]
+parseGears :: String -> Int -> [Int]
 parseGears [] _ = []
 parseGears (x:xs) pos
     | x == '*' =
-        let newPart = Part pos 1 1
-        in
-        newPart:parseGears xs (pos + 1)
+        pos:parseGears xs (pos + 1)
     | otherwise = parseGears xs (pos + 1)
 
 -- solving
@@ -42,15 +40,14 @@ shiftContext (Context parts gears) line =
     in
     Context (drop 1 parts ++ [newParts]) (drop 1 gears ++ [newGears])
 
-gearMatchesPart :: Part -> Part -> Bool
-gearMatchesPart gear part =
-    let gearPos = position gear
-        partStart = position part - 1
+gearMatchesPart :: Int -> Part -> Bool
+gearMatchesPart gearPos part =
+    let partStart = position part - 1
         partEnd = partStart + len part + 1
     in
     gearPos >= partStart && gearPos <= partEnd
 
-countGearRatios :: [[Part]] -> Part -> Int
+countGearRatios :: [[Part]] -> Int -> Int
 countGearRatios parts gear =
     let matchingParts = filter (gearMatchesPart gear) . concat $ parts
     in
