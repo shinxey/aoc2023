@@ -8,9 +8,6 @@ import qualified Data.Char as Char
 data Part = Part { position :: Int, len :: Int, value :: Int }
 data Context = Context { parts :: [[Part]], gears :: [[Int]] }
 
-instance Show Part where
-    show (Part pos len val) = "{ pos: " ++ show pos ++ ", len: " ++ show len ++ ", value: " ++ show val ++ "}"
-
 emptyContext :: Context
 emptyContext = Context [[], [], []] [[], [], []]
 
@@ -27,8 +24,7 @@ parseParts str pos =
 parseGears :: String -> Int -> [Int]
 parseGears [] _ = []
 parseGears (x:xs) pos
-    | x == '*' =
-        pos:parseGears xs (pos + 1)
+    | x == '*'  = pos:parseGears xs (pos + 1)
     | otherwise = parseGears xs (pos + 1)
 
 -- solving
