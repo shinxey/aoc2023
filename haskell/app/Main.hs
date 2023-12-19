@@ -3,6 +3,7 @@ import Day2
 import Day3
 import Day4
 import Day5
+import Day6
 
 import Data.List.Split
 
@@ -19,5 +20,8 @@ main = do
     day5Input <- readFile "inputs/input5.txt"
     putStrLn ("day 5 answer is " ++ (show . day5 $ day5Input))
     putStrLn ("day 5 part 2 answer is " ++ (show . day5part2 $ day5Input))
+    day6Input <- readFile "inputs/input6.txt"
+    putStrLn ("day 6 answer is " ++ (show . day6 $ day6Input))
+    putStrLn ("day 6 part 2 answer is " ++ (show . day6Part2 $ day6Input))
     return ()
 
