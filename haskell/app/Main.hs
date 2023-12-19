@@ -4,8 +4,10 @@ import Day3
 import Day4
 import Day5
 import Day6
+import Day7
 
 import Data.List.Split
+import Data.List (sortBy)
 
 main = do
     day1Input <- readFile "inputs/input1.txt"
@@ -23,5 +25,8 @@ main = do
     day6Input <- readFile "inputs/input6.txt"
     putStrLn ("day 6 answer is " ++ (show . day6 $ day6Input))
     putStrLn ("day 6 part 2 answer is " ++ (show . day6Part2 $ day6Input))
+    day7Input <- readFile "inputs/input7.txt"
+    putStrLn ("day 7 answer is " ++ (show . day7 $ day7Input))
+    putStrLn ("day 7 part 2 answer is " ++ (show . day7part2 $ day7Input))
     return ()
 
