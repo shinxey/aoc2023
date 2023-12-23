@@ -6,6 +6,9 @@ import Day5
 import Day6
 import Day7
 import Day8
+import Day9
+
+mySeq = tail [23,32,40,47,53,58,62,65,67,68,68,67,65,62,58,53,47,40,32,23,13]
 
 main = do
     day1Input <- readFile "inputs/input1.txt"
@@ -33,10 +36,13 @@ main = do
     putStrLn ("day 7 answer is " ++ (show . day7 $ day7Input))
     putStrLn ("day 7 part 2 answer is " ++ (show . day7part2 $ day7Input))
 
-    --day8Input <- readFile "inputs/input8_test.txt"
     day8Input <- readFile "inputs/input8.txt"
     putStrLn ("day 8 answer is " ++ (show . day8 $ day8Input))
     putStrLn ("day 8 part 2 answer is " ++ (show . day8part2 $ day8Input))
+
+    day9Input <- readFile "inputs/input9.txt"
+    putStrLn ("day 9 answer is " ++ (show . day9 $ day9Input))
+    putStrLn ("day 9 part 2 answer is " ++ (show . day9Part2 $ day9Input))
 
     return ()
 
