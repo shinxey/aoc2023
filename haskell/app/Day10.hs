@@ -46,7 +46,7 @@ walk :: WalkContext a => Maze -> Pos -> Pos -> Dir -> a -> a
 walk maze startPos pos dir ctx
     | startPos == newPos = updateContext ctx pos
     | otherwise = walk maze startPos newPos newDir (updateContext ctx pos)
-    where 
+    where
       newPos = next pos dir
       newDir = nextDir (at maze newPos) dir
 
@@ -90,9 +90,9 @@ countArea (c:cs) set coef (Pos x y)
       pos = Pos x y
       newPos = Pos (x + 1) y
       isLoop = Set.member pos set
-      newCoef = if isLoop 
+      newCoef = if isLoop
                     then coef + insideCoef c
-                    else coef 
+                    else coef
       area = fromEnum (coef `mod` 4 == 2)
 
 day10Part2 :: String -> Int
