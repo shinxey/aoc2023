@@ -8,6 +8,7 @@ import Day7
 import Day8
 import Day9
 import Day10
+import Day11
 
 main = do
     day1Input <- readFile "inputs/input1.txt"
@@ -46,6 +47,10 @@ main = do
     day10Input <- readFile "inputs/input10.txt"
     putStrLn ("day 10 answer is " ++ (show . day10 $ day10Input))
     putStrLn ("day 10 part 2 answer is " ++ (show . day10Part2 $ day10Input))
+
+    day11Input <- readFile "inputs/input11.txt"
+    putStrLn ("day 11 answer is " ++ (show . day11 $ day11Input))
+    putStrLn ("day 11 part 2 answer is " ++ (show . day11Part2 $ day11Input))
 
     return ()
 

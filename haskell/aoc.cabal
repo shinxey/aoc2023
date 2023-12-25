@@ -17,6 +17,7 @@ executable aoc2023
                       Day8
                       Day9
                       Day10
+                      Day11
 
     build-depends:    base ^>=4.17.2.0
                       , split
